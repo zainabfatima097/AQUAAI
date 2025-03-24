@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolutionizing Ocean Cleanup with AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <img src="./logo.jpg" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('about-us')">About Us</a></li>
+                <li><a href="#" onclick="showSection('ai-detection')">AI Detection</a></li>
+                <li><a href="#" onclick="showSection('volunteering')">Become a Volunteer</a></li>
+                <li><a href="#" onclick="showSection('contact-us')">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="content-section" style="display: block;">
+        <h1>Revolutionizing Ocean Cleanup with AI</h1>
+        <p>Protecting the oceans, one algorithm at a time.</p>
+        <p class="home-info">
+            Oceans cover 71% of the Earth’s surface, playing a crucial role in regulating climate, supporting biodiversity, and providing resources like food and energy. They are the lifeblood of our planet, helping to stabilize global temperatures and provide oxygen through marine life.
+        </p>
+        <p class="home-info">
+            Oceans are home to 80% of the world’s species, supporting a diverse range of life forms. They also provide food, minerals, and energy resources, benefiting global economies.
+        </p>
+        <p class="home-info">
+            However, oceans are increasingly polluted, with plastic waste being one of the most significant threats. Every year, millions of tons of plastic end up in the sea, harming marine life and ecosystems. The problem also contributes to microplastic pollution, affecting the food chain.
+        </p>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="content-section">
+        <h2>About Us</h2>
+        <p>At Aqua ImpactHers, our mission is driven by a deep-seated passion for the preservation of our planet's oceans.
+        <br>
+        We are a dedicated team of individuals, Zainab Fatima, Syeda Alizah, and Sarah Aejaz, united by a shared vision: to combat the escalating threat of plastic pollution in our marine ecosystems.</p>
+        <br>
+        <p>The health of our oceans is intrinsically linked to the well-being of our planet and its inhabitants.
+         We recognize the urgent need for innovative solutions to address the pervasive issue of plastic waste, which not only endangers marine life but also disrupts the delicate balance of our ecosystems.</p>
+        <p>We believe that technology, combined with a passionate commitment to environmental stewardship, can be a powerful catalyst for change. Through our AI Ocean Cleanup initiative, we aim to leverage cutting-edge artificial intelligence to detect and mitigate plastic pollution, paving the way for cleaner, healthier oceans for generations to come.</p>
+        <p>We are Aqua ImpactHers, and we are dedicated to making waves of positive change. Join us in our mission to safeguard the future of our oceans.</p>
+    </section>
+
+    <!-- AI Detection Section -->
+    <section id="ai-detection" class="content-section">
+        <h2>AI Detection</h2>
+        <p>AI-powered detection system to identify and help clean ocean pollution using advanced algorithms and robotics.</p>
+        <br>
+    <p>Upload an image of the ocean, and our AI will detect plastic pollution.</p>
+
+    <form id="uploadForm">
+        <input type="file" id="imageInput" accept="image/*" required>
+        <button type="submit">Detect Plastic</button>
+    </form>
+
+    <p id="predictionResult"></p>
+</section>
+
+    </section>
+
+    <!-- Volunteering Section -->
+<section id="volunteering" class="content-section">
+    <h2>Become a Volunteer</h2>
+    <p>Help us clean the oceans! Sign up below to be part of the movement.</p>
+    <form id="signup-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Your Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p id="signup-message"></p>
+</section>
+
+
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="content-section">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Reach out to us:</p>
+        <p>Email: info@oceancleanup.ai</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Address: 123 Ocean Street, City, Country</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
