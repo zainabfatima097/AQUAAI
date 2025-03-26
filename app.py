@@ -1,36 +1,36 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-import torch
-from PIL import Image
-from torchvision import transforms
+import torch  # For PyTorch models (Change if using TensorFlow/Keras)
+import numpy as np
+import os
 
 app = Flask(__name__)
-CORS(app)  # Allow frontend to talk to backend
 
-# Load your trained model (modify path if needed)
-model = torch.load("", map_location=torch.device('cpu'))
-model.eval()
+# Load the AI model
+MODEL_PATH = os.path.join("Ai_integration", "model.pth")  # Change extension if needed
+model = torch.load(MODEL_PATH, map_location=torch.device('cpu'))  # Load on CPU
+model.eval()  # Set model to evaluation mode
 
-# Image transformation
-transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor()
-])
+@app.route("/")
+def home():
+    return "AI Ocean Cleanup Model API is Running! 🚀"
 
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
-    if 'image' not in request.files:
-        return jsonify({"error": "No image uploaded"}), 400
+    try:
+        data = request.json
+        input_data = np.array(data["features"]).reshape(1, -1)  # Adjust shape as needed
 
-    image = request.files['image']
-    img = Image.open(image).convert('RGB')
-    img = transform(img).unsqueeze(0)
+        # Convert to tensor (for PyTorch models)
+        input_tensor = torch.tensor(input_data, dtype=torch.float32)
+        
+        # Make prediction
+        with torch.no_grad():
+            prediction = model(input_tensor).tolist()
 
-    with torch.no_grad():
-        output = model(img)
-        prediction = "Plastic Detected" if torch.argmax(output) == 1 else "No Plastic Detected"
+        return jsonify({"prediction": prediction})
 
-    return jsonify({"prediction": prediction})
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
