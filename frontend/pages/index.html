@@ -56,10 +56,32 @@
         <br>
     <p>Upload an image of the ocean, and our AI will detect plastic pollution.</p>
 
-    <form id="uploadForm">
-        <input type="file" id="imageInput" accept="image/*" required>
-        <button type="submit">Detect Plastic</button>
-    </form>
+    <form id="upload-form" action="/predict" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Detect Plastic</button>
+</form>
+
+<script>
+document.getElementById('upload-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    try {
+        const response = await fetch('/predict', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        console.log(result);
+
+        alert(`Prediction: ${result.prediction}`);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to predict');
+    }
+});
+</script>
 
     <p id="predictionResult"></p>
 </section>
